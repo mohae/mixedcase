@@ -193,7 +193,7 @@ var numTests = []struct {
 
 func TestNumToAlpha(t *testing.T) {
 	for _, test := range numTests {
-		v := numToAlpha(test.val)
+		v := NumToAlpha(test.val)
 		if v != test.expected {
 			t.Errorf("%s: got %q; want %q", test.val, v, test.expected)
 		}

@@ -1,3 +1,7 @@
+// Copyright (c) 2016, Joel Scoble. All rights reserved.
+//
+// Use of this source code is governed by the MIT license
+// that can be found in the LICENSE file.
 package mixedcase
 
 import (
@@ -8,7 +12,7 @@ import (
 )
 
 // Exported returns the string as a MixedCase string that can be used for
-// exported values.
+// exported identifiers.
 func Exported(s string) string {
 	var v string
 
@@ -19,7 +23,7 @@ func Exported(s string) string {
 	vals := strings.Split(s, "_")
 	for i, val := range vals {
 		if i == 0 {
-			val = numToAlpha(val)
+			val = NumToAlpha(val)
 		}
 		v = fmt.Sprintf("%s%s", v, UpperInitialism(strings.Title(val)))
 	}
@@ -27,7 +31,7 @@ func Exported(s string) string {
 }
 
 // Unexported returns the string as a mixedCase string that can be used for
-// unexported values.
+// unexported identifiers.
 func Unexported(s string) string {
 	var v string
 
@@ -38,7 +42,7 @@ func Unexported(s string) string {
 	vals := strings.Split(s, "_")
 	for i, val := range vals {
 		if i == 0 {
-			v = numToAlpha(val)
+			v = NumToAlpha(val)
 			v = LowerInitialism(LowerFirstRune(v))
 			continue
 		}
@@ -137,10 +141,10 @@ func shouldDiscard(r rune) bool {
 	return false
 }
 
-// numToAlpha checks to see if the first char is a number, if it is, it gets
+// NumToAlpha checks to see if the first char is a number, if it is, it gets
 // converted to its word equivalent. The rest of the string is uppercased if
 // it is an initialism and title cased since it now counts as a seperate word.
-func numToAlpha(s string) string {
+func NumToAlpha(s string) string {
 	var n string
 	switch s[0] {
 	case '0':
